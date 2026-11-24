@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { frames, seconds } from '@/lib/gameFormat'
 import type { Montage } from '@/lib/gameTypes'
-import { Facts, PageHeader, Tab, TabList } from '@/ui'
+import { Facts, KINDS, KIND_LABELS, PageHeader, Tab, TabList, type Kind } from '@/ui'
 import { NotifyTable } from './NotifyTable'
-import { KINDS, KIND_LABELS, type Kind } from './notifyFormat'
 
 export function MontageView({ montage }: { montage: Montage }) {
   const [kind, setKind] = useState<Kind>('hit')

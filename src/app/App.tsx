@@ -3,20 +3,22 @@ import { BulletPage } from '@/features/game-bullet/BulletPage'
 import { MontagePage } from '@/features/game-montage/MontagePage'
 import { RowPage } from '@/features/game-row/RowPage'
 import { SkillsPage } from '@/features/game-skills/SkillsPage'
+import { CharacterEditorPage } from '@/features/character-editor/CharacterEditorPage'
 import { AstryxRoot } from '@/ui'
 
-const FIRST_CHARACTER = '/game/1501'
+const FIRST_PAGE = '/admin/abilities'
 
 export function App() {
   return (
     <BrowserRouter>
       <AstryxRoot>
         <Routes>
-          <Route path="/" element={<Navigate to={FIRST_CHARACTER} replace />} />
-          <Route path="/game/montage" element={<MontagePage />} />
-          <Route path="/game/bullet/:bulletId" element={<BulletPage />} />
-          <Route path="/game/row/:kind/:rowId" element={<RowPage />} />
-          <Route path="/game/:characterId" element={<SkillsPage />} />
+          <Route path="/" element={<Navigate to={FIRST_PAGE} replace />} />
+          <Route path="/admin/abilities" element={<CharacterEditorPage />} />
+          <Route path="/admin/game/montage" element={<MontagePage />} />
+          <Route path="/admin/game/bullet/:bulletId" element={<BulletPage />} />
+          <Route path="/admin/game/row/:kind/:rowId" element={<RowPage />} />
+          <Route path="/admin/game/:characterId" element={<SkillsPage />} />
         </Routes>
       </AstryxRoot>
     </BrowserRouter>

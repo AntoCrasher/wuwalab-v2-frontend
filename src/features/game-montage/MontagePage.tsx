@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import type { Montage } from '@/lib/gameTypes'
-import { LoadGate, useJson } from '@/ui'
+import { AdminBack, LoadGate, useJson } from '@/ui'
 import { MontageView } from './MontageView'
 
 export function MontagePage() {
@@ -9,7 +9,8 @@ export function MontagePage() {
   const montage = useJson<Montage>(`/api/game/montage?key=${encodeURIComponent(key)}`)
 
   return (
-    <main className="wl-page">
+    <main className="container">
+      <AdminBack to="/admin/abilities" label="Character Editor" />
       <LoadGate loaded={montage}>{(data) => <MontageView montage={data} key={data.assetKey} />}</LoadGate>
     </main>
   )

@@ -18,7 +18,7 @@ const COLUMNS: TableColumn<Row>[] = [
     width: pixel(130),
     renderCell: (damage) => (
       <span className="wl-mono">
-        <Link href={`/game/row/damage/${damage.id}`}>{damage.id}</Link>
+        <Link href={`/admin/game/row/damage/${damage.id}`}>{damage.id}</Link>
       </span>
     ),
   },

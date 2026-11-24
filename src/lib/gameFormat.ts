@@ -9,7 +9,7 @@ export function seconds(value: number): string {
 }
 
 export function montagePath(assetKey: string): string {
-  return `/game/montage?key=${encodeURIComponent(assetKey)}`
+  return `/admin/game/montage?key=${encodeURIComponent(assetKey)}`
 }
 
 export function plain(value: unknown): string {

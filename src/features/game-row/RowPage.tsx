@@ -1,14 +1,15 @@
 import { useParams } from 'react-router-dom'
 import { plain } from '@/lib/gameFormat'
 import type { GameRow } from '@/lib/gameTypes'
-import { Facts, LoadGate, PageHeader, useJson } from '@/ui'
+import { AdminBack, Facts, LoadGate, PageHeader, useJson } from '@/ui'
 
 export function RowPage() {
   const { kind = '', rowId = '' } = useParams()
   const loaded = useJson<GameRow>(`/api/game/${kind}/${rowId}`)
 
   return (
-    <main className="wl-page">
+    <main className="container">
+      <AdminBack to="/admin/abilities" label="Character Editor" />
       <LoadGate loaded={loaded}>
         {(row) => (
           <>

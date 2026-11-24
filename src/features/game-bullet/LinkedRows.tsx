@@ -11,7 +11,7 @@ export function LinkedRows({ bullet }: { bullet: Bullet }) {
       {bullet.children.map((child) => (
         <div className="wl-fact" key={`child-${child.position}`}>
           <dt>
-            child <Link href={`/game/bullet/${child.childId}`}>{child.childId}</Link>
+            child <Link href={`/admin/game/bullet/${child.childId}`}>{child.childId}</Link>
           </dt>
           <dd>
             after {frames(child.delay)}, x{child.childCount}, trigger {child.triggerType}
@@ -21,7 +21,7 @@ export function LinkedRows({ bullet }: { bullet: Bullet }) {
       {bullet.buffs.map((buff) => (
         <div className="wl-fact" key={`buff-${buff.position}`}>
           <dt>
-            buff <Link href={`/game/row/buff/${buff.buffId}`}>{buff.buffId}</Link>
+            buff <Link href={`/admin/game/row/buff/${buff.buffId}`}>{buff.buffId}</Link>
           </dt>
           <dd>to {buff.target}</dd>
         </div>

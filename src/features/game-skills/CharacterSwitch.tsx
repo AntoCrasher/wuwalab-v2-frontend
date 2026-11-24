@@ -11,7 +11,7 @@ export function CharacterSwitch({ characters, current }: { characters: GameChara
         label="Character"
         size="sm"
         value={current}
-        onChange={(id) => void navigate(`/game/${id}`)}
+        onChange={(id) => void navigate(`/admin/game/${id}`)}
       >
         {characters.map((character) => (
           <SegmentedControlItem

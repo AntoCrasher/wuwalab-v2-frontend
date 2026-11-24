@@ -1,8 +1,6 @@
 import { frames } from '@/lib/gameFormat'
 import type { Notify } from '@/lib/gameTypes'
-import { EmptyNote, Table, pixel, proportional, type TableColumn } from '@/ui'
-import { NotifySummary } from './NotifySummary'
-import { shortClass } from './notifyFormat'
+import { EmptyNote, NotifySummary, Table, pixel, proportional, shortClass, type TableColumn } from '@/ui'
 
 type Row = Notify & Record<string, unknown>
 
