@@ -1,0 +1,128 @@
+.wl-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.wl-chip-n {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.wl-empty {
+  margin: 0;
+  padding: 16px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.astryx-tab {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.astryx-tab:hover {
+  color: var(--text);
+}
+
+.astryx-tab[data-selected] {
+  color: var(--accent);
+}
+
+.astryx-tab > span:first-child {
+  bottom: -3px;
+}
+
+.astryx-tab-indicator {
+  left: 0;
+  right: 0;
+}
+
+.astryx-tab:not([data-selected]):hover .astryx-tab-indicator {
+  opacity: 1;
+  background-color: var(--border-light);
+}
+
+.astryx-tab-list {
+  border-bottom-color: var(--border-light);
+}
+
+.astryx-segmented-control {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 0;
+  padding: 3px;
+  gap: 3px;
+}
+
+.astryx-segmented-control-item {
+  border-radius: 0;
+  padding-inline: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--ctl-fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.astryx-segmented-control[data-size='sm'] .astryx-segmented-control-item {
+  height: 20px;
+  min-height: 0;
+}
+
+.astryx-segmented-control-item:hover {
+  color: var(--text);
+  background: transparent;
+}
+
+.astryx-segmented-control-item[aria-checked='true'] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.astryx-link {
+  color: var(--accent);
+  background: none;
+}
+
+.astryx-link:hover {
+  color: var(--accent-hover);
+}
+
+.astryx-link,
+.astryx-link .astryx-text {
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.astryx-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:root,
+[data-astryx-theme] {
+  --focus-outline-width: 0px;
+}
+
+:where(div, section, ul, ol, dialog):focus,
+:where(div, section, ul, ol, dialog):focus-visible {
+  outline: none;
+}
