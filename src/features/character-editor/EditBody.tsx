@@ -17,7 +17,7 @@ export function EditBody({ ability, skills, onSaved, onCancel }: Props) {
   function save() {
     sendJson('PUT', `/api/admin/abilities/${ability.id}`, draft)
       .then(() => {
-        toastSuccess(`Saved ${draft.name}`)
+        toastSuccess(`Saved ${draft.names.en}`)
         onSaved()
       })
       .catch((failure: unknown) => toastError('Could not save the ability', failure))

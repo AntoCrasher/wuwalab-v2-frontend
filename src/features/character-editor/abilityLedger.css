@@ -1,5 +1,5 @@
 .ability-section {
-  --ability-cols: 28px minmax(180px, 1fr) 90px 52px 52px 80px 80px 80px 66px 90px 150px;
+  --ability-cols: 28px minmax(180px, 1fr) 124px 52px 52px 80px 80px 80px 66px 90px 150px;
   border-top: 1px solid var(--border);
 }
 
@@ -166,27 +166,11 @@
   padding-top: 10px;
 }
 
-.edit-fields {
-  display: grid;
-  grid-template-columns: minmax(220px, 2fr) 120px 130px;
-  gap: 10px 14px;
-  align-items: end;
-}
-
 .edit-field {
   display: flex;
   flex-direction: column;
   gap: 3px;
   min-width: 0;
-}
-
-.edit-steps {
-  display: grid;
-  grid-template-columns: 36px minmax(150px, 1.3fr) minmax(150px, 1.3fr) 96px minmax(150px, 1.3fr) 96px 80px;
-  gap: 6px 8px;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 12px;
 }
 
 .edit-swaps {
@@ -196,4 +180,53 @@
   align-items: center;
   font-family: var(--font-mono);
   font-size: 12px;
+}
+
+.edit-names {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.edit-fields {
+  display: grid;
+  grid-template-columns: 140px 140px;
+  gap: 10px 14px;
+}
+
+.edit-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.edit-step {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) minmax(0, 1.6fr) 90px;
+  gap: 6px 8px;
+  align-items: center;
+}
+
+.edit-step-leave {
+  grid-column: 2 / 4;
+  display: grid;
+  grid-template-columns: 70px 130px minmax(0, 1fr) 120px 110px;
+  gap: 8px;
+  align-items: center;
+}
+
+.atd-name {
+  white-space: normal;
+}
+
+.atd-name > .atd-name-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.atd-name > .astryx-badge {
+  flex-shrink: 0;
+  max-width: none;
 }

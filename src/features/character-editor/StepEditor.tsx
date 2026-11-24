@@ -28,18 +28,22 @@ export function StepEditor({ index, step, skills, onChange, onRemove }: Props) {
   }
 
   return (
-    <>
+    <div className="edit-step">
       <span>{index + 1}</span>
       <StepSource step={step} skills={skills} onChange={onChange} />
-      <GridSelect label="Left at" value={step.leaveKind} options={LEAVE_OPTIONS} onChange={pickLeave} />
-      <LeavePoint step={step} onChange={onChange} />
-      <GridNumber
-        label="Next starts at seconds"
-        step={SECOND_STEP}
-        value={step.nextStart}
-        onChange={(nextStart) => onChange({ ...step, nextStart })}
-      />
       <Button variant="ghost" size="sm" label="Remove" onClick={onRemove} />
-    </>
+      <div className="edit-step-leave">
+        <span className="ce-label">Left at</span>
+        <GridSelect label="Left at" value={step.leaveKind} options={LEAVE_OPTIONS} onChange={pickLeave} />
+        <LeavePoint step={step} onChange={onChange} />
+        <span className="ce-label">Next starts (s)</span>
+        <GridNumber
+          label="Next starts at seconds"
+          step={SECOND_STEP}
+          value={step.nextStart}
+          onChange={(nextStart) => onChange({ ...step, nextStart })}
+        />
+      </div>
+    </div>
   )
 }

@@ -1,4 +1,4 @@
-import type { AbilityDetail } from './adminTypes'
+import type { AbilityDetail, Language } from './adminTypes'
 import type { Skill } from './gameTypes'
 
 export const LEAVE_KINDS = ['end', 'notify', 'time'] as const
@@ -16,7 +16,7 @@ export type StepDraft = {
 export type SwapDraft = { step: number; time: number } | null
 
 export type AbilityDraft = {
-  name: string
+  names: Record<Language, string>
   sortIndex: number
   isDraft: boolean
   hardSwap: SwapDraft
@@ -38,7 +38,7 @@ function swap(step: number | null, time: number | null): SwapDraft {
 
 export function draftOf(ability: AbilityDetail): AbilityDraft {
   return {
-    name: ability.name,
+    names: { ...ability.names },
     sortIndex: ability.sortIndex,
     isDraft: ability.isDraft,
     hardSwap: swap(ability.hardSwapStep, ability.hardSwapTime),

@@ -52,4 +52,7 @@ export type PathStep = {
   notifies: PathNotify[]
 }
 
-export type AbilityDetail = AbilitySummary & { path: PathStep[] }
+export const LANGUAGES = ['en', 'jp', 'cn', 'kr'] as const
+export type Language = (typeof LANGUAGES)[number]
+
+export type AbilityDetail = AbilitySummary & { names: Record<Language, string>; path: PathStep[] }

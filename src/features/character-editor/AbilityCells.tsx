@@ -10,7 +10,7 @@ export function AbilityCells({ ability }: { ability: AbilitySummary }) {
   return (
     <>
       <div className="atd atd-name">
-        {ability.name}
+        <span className="atd-name-text">{ability.name}</span>
         {ability.isDraft && <Badge label="Draft" variant="warning" />}
       </div>
       <div className="atd">
