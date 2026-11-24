@@ -39,6 +39,7 @@ export function CharacterCard({
       <div className="ce-summary">
         <Stat label="Id">{character.id}</Stat>
         <Stat label="Folder">{folder}</Stat>
+        <Stat label="Body type">{character.bodyType}</Stat>
         <Stat label="Snapshot">{character.snapshot}</Stat>
         <Stat label="Swap-in ground">{character.swapInGround ?? '-'}</Stat>
         <Stat label="Swap-in air">{character.swapInAir ?? '-'}</Stat>

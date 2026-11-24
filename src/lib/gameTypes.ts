@@ -3,6 +3,7 @@ export type GameCharacter = {
   folder: string
   element: number
   weaponType: number
+  bodyType: string
   nameKey: string
   snapshot: string
   swapInGround: number | null
