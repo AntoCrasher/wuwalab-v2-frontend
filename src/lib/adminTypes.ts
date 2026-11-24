@@ -39,7 +39,7 @@ export type PathStep = {
   position: number
   skillId: number
   skillName: string | null
-  montageKey: string
+  montageKey: string | null
   montageName: string | null
   montageLength: number | null
   leaveKind: string

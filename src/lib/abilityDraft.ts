@@ -6,7 +6,7 @@ export type LeaveKind = (typeof LEAVE_KINDS)[number]
 
 export type StepDraft = {
   skillId: number
-  montageKey: string
+  montageKey: string | null
   leaveKind: LeaveKind
   leaveNotify: number | null
   leaveTime: number | null
@@ -61,6 +61,6 @@ export function firstStep(skills: Skill[]): StepDraft {
   return stepFor(skill.id, montage.assetKey)
 }
 
-export function stepFor(skillId: number, montageKey: string): StepDraft {
+export function stepFor(skillId: number, montageKey: string | null): StepDraft {
   return { skillId, montageKey, leaveKind: 'end', leaveNotify: null, leaveTime: null, nextStart: 0 }
 }

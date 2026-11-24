@@ -33,7 +33,11 @@ export function PathTab({ ability }: { ability: AbilityDetail }) {
             <span>{step.skillId}</span>
             <span>{step.skillName ?? '-'}</span>
             <span>
-              <Link href={montagePath(step.montageKey)}>{step.montageName ?? step.montageKey}</Link>
+              {step.montageKey === null ? (
+                <span className="wl-dim">none</span>
+              ) : (
+                <Link href={montagePath(step.montageKey)}>{step.montageName ?? step.montageKey}</Link>
+              )}
             </span>
             <span>{frames(step.from)}</span>
             <span>{leftAt(step)}</span>

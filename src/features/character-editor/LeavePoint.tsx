@@ -5,6 +5,9 @@ import { LeaveNotifySelect } from './LeaveNotifySelect'
 const SECOND_STEP = 0.01
 
 export function LeavePoint({ step, onChange }: { step: StepDraft; onChange: (step: StepDraft) => void }) {
+  if (step.montageKey === null) {
+    return <span className="wl-dim">no montage: plays nothing</span>
+  }
   if (step.leaveKind === 'notify') {
     return (
       <LeaveNotifySelect
