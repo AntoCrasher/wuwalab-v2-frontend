@@ -40,6 +40,8 @@ export function CharacterCard({
         <Stat label="Id">{character.id}</Stat>
         <Stat label="Folder">{folder}</Stat>
         <Stat label="Snapshot">{character.snapshot}</Stat>
+        <Stat label="Swap-in ground">{character.swapInGround ?? '-'}</Stat>
+        <Stat label="Swap-in air">{character.swapInAir ?? '-'}</Stat>
         <Stat label="Game data">
           <Link href={`/admin/game/${character.id}`}>skills</Link>
         </Stat>

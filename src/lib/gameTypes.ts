@@ -5,6 +5,8 @@ export type GameCharacter = {
   weaponType: number
   nameKey: string
   snapshot: string
+  swapInGround: number | null
+  swapInAir: number | null
 }
 
 export type MontageRef = { assetKey: string; name?: string; length?: number }
