@@ -1,6 +1,6 @@
 import type { AbilityDraft } from '@/lib/abilityDraft'
 import { LANGUAGES, type Language } from '@/lib/adminTypes'
-import { GridNumber, GridSelect, GridText } from '@/ui'
+import { GridSelect, GridText } from '@/ui'
 
 type Props = { draft: AbilityDraft; onChange: (patch: Partial<AbilityDraft>) => void }
 
@@ -32,24 +32,14 @@ export function EditFields({ draft, onChange }: Props) {
           ))}
         </div>
       </div>
-      <div className="edit-fields">
-        <div className="edit-field">
-          <span className="ce-label">Order</span>
-          <GridNumber
-            label="Order"
-            value={draft.sortIndex}
-            onChange={(sortIndex) => onChange({ sortIndex })}
-          />
-        </div>
-        <div className="edit-field">
-          <span className="ce-label">Draft</span>
-          <GridSelect
-            label="Draft"
-            value={draft.isDraft ? 'draft' : 'confirmed'}
-            options={DRAFT_OPTIONS}
-            onChange={(state) => onChange({ isDraft: state === 'draft' })}
-          />
-        </div>
+      <div className="edit-field edit-draft">
+        <span className="ce-label">Draft</span>
+        <GridSelect
+          label="Draft"
+          value={draft.isDraft ? 'draft' : 'confirmed'}
+          options={DRAFT_OPTIONS}
+          onChange={(state) => onChange({ isDraft: state === 'draft' })}
+        />
       </div>
     </>
   )

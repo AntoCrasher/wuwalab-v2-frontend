@@ -17,7 +17,6 @@ export type SwapDraft = { step: number; time: number } | null
 
 export type AbilityDraft = {
   names: Record<Language, string>
-  sortIndex: number
   isDraft: boolean
   hardSwap: SwapDraft
   recommendedSwap: SwapDraft
@@ -39,7 +38,6 @@ function swap(step: number | null, time: number | null): SwapDraft {
 export function draftOf(ability: AbilityDetail): AbilityDraft {
   return {
     names: { ...ability.names },
-    sortIndex: ability.sortIndex,
     isDraft: ability.isDraft,
     hardSwap: swap(ability.hardSwapStep, ability.hardSwapTime),
     recommendedSwap: swap(ability.recommendedSwapStep, ability.recommendedSwapTime),
