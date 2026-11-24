@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import type { AdminCharacter } from '@/lib/adminTypes'
-import { Badge, EditorCard, Link } from '@/ui'
+import { EditorCard, Link, TermBadge, useTerm } from '@/ui'
 import { AbilityLedger } from './AbilityLedger'
 
-const CARD_COLOR = 'var(--accent)'
+const FALLBACK_COLOR = 'var(--accent)'
 
 function Stat({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -22,15 +22,16 @@ export function CharacterCard({
   onChanged: () => void
 }) {
   const folder = character.folder.split('/').at(-1) ?? character.folder
+  const element = useTerm('element', character.element)
 
   return (
     <EditorCard
-      color={CARD_COLOR}
+      color={element?.color ?? FALLBACK_COLOR}
       name={folder}
       tags={
         <>
-          <Badge label={`Element ${character.element}`} />
-          <Badge label={`Weapon ${character.weaponType}`} />
+          <TermBadge list="element" id={character.element} />
+          <TermBadge list="weapon_type" id={character.weaponType} />
         </>
       }
       count={`${character.abilities.length} abilities`}

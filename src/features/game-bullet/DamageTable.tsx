@@ -1,6 +1,6 @@
 import { plain } from '@/lib/gameFormat'
 import type { Damage } from '@/lib/gameTypes'
-import { EmptyNote, Link, Table, pixel, proportional, type TableColumn } from '@/ui'
+import { EmptyNote, Link, Table, TermBadge, pixel, proportional, type TableColumn } from '@/ui'
 
 type Row = Damage & Record<string, unknown>
 
@@ -25,16 +25,14 @@ const COLUMNS: TableColumn<Row>[] = [
   {
     key: 'element',
     header: 'Element',
-    width: pixel(80),
-    align: 'end',
-    renderCell: (damage) => plain(damage.element),
+    width: pixel(110),
+    renderCell: (damage) => <TermBadge list="element" id={damage.element} />,
   },
   {
     key: 'damageType',
     header: 'Type',
-    width: pixel(70),
-    align: 'end',
-    renderCell: (damage) => plain(damage.damageType),
+    width: pixel(190),
+    renderCell: (damage) => <TermBadge list="damage_type" id={damage.damageType} />,
   },
   { key: 'rateLv', header: 'Multiplier lv 1', width: proportional(1), align: 'end', renderCell: rate },
   {

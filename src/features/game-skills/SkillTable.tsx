@@ -1,6 +1,6 @@
 import { frames, montagePath } from '@/lib/gameFormat'
 import type { Skill } from '@/lib/gameTypes'
-import { EmptyNote, Link, Table, pixel, proportional, type TableColumn } from '@/ui'
+import { EmptyNote, Link, Table, TermBadge, pixel, proportional, type TableColumn } from '@/ui'
 
 type Row = Skill & Record<string, unknown>
 
@@ -12,7 +12,12 @@ const COLUMNS: TableColumn<Row>[] = [
     renderCell: (skill) => <span className="wl-mono">{skill.id}</span>,
   },
   { key: 'name', header: 'Game name', width: proportional(2), renderCell: (skill) => skill.name },
-  { key: 'genre', header: 'Genre', width: pixel(60), align: 'end', renderCell: (skill) => skill.genre },
+  {
+    key: 'genre',
+    header: 'Genre',
+    width: pixel(110),
+    renderCell: (skill) => <TermBadge list="skill_genre" id={skill.genre} />,
+  },
   {
     key: 'interruptLevel',
     header: 'Priority',

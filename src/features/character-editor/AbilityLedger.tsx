@@ -8,7 +8,7 @@ import './abilityLedger.css'
 const HEADERS = [
   '',
   'Name',
-  'Type',
+  'Genre',
   'Steps',
   'Hits',
   'Length',

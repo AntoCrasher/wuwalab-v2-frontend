@@ -3,7 +3,7 @@ import type { GameCharacter, Notify } from './gameTypes'
 export type AbilitySummary = {
   id: number
   name: string
-  abilityType: string | null
+  genre: number | null
   sortIndex: number
   isDraft: boolean
   steps: number

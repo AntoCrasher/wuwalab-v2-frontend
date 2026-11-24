@@ -5,6 +5,7 @@ import { BulletPage } from '@/features/game-bullet/BulletPage'
 import { MontagePage } from '@/features/game-montage/MontagePage'
 import { RowPage } from '@/features/game-row/RowPage'
 import { SkillsPage } from '@/features/game-skills/SkillsPage'
+import { TermColorsPage } from '@/features/term-colors/TermColorsPage'
 import { AstryxRoot } from '@/ui'
 
 export function App() {
@@ -15,6 +16,7 @@ export function App() {
           <Route path="/" element={<Navigate to="/admin" replace />} />
           <Route path="/admin" element={<AdminIndexPage />} />
           <Route path="/admin/abilities" element={<CharacterEditorPage />} />
+          <Route path="/admin/colors" element={<TermColorsPage />} />
           <Route path="/admin/game/montage" element={<MontagePage />} />
           <Route path="/admin/game/bullet/:bulletId" element={<BulletPage />} />
           <Route path="/admin/game/row/:kind/:rowId" element={<RowPage />} />

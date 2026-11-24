@@ -8,6 +8,7 @@ import './ledger.css'
 import './page.css'
 import { DialogBridge } from './DialogBridge'
 import { RouterLink } from './RouterLink'
+import { TermsProvider } from './TermsProvider'
 import { ToastBridge } from './ToastBridge'
 import { wuwalabTheme } from './theme/wuwalabTheme'
 import { useInputModality } from './useInputModality'
@@ -23,7 +24,7 @@ export function AstryxRoot({ children }: { children: ReactNode }) {
         <ToastViewport position="topEnd" inset={TOAST_INSET}>
           <ToastBridge />
           <DialogBridge />
-          {children}
+          <TermsProvider>{children}</TermsProvider>
         </ToastViewport>
       </LinkProvider>
     </Theme>

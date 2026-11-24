@@ -8,6 +8,11 @@ const TILES = [
     desc: 'Characters and their abilities: the path of montages each one plays, its hits and its swap blocks.',
   },
   {
+    href: '/admin/colors',
+    title: 'Colors',
+    desc: 'The color of every element, weapon type, damage type, subtype, scaling and skill genre.',
+  },
+  {
     href: '/admin/game/1501',
     title: 'Game data',
     desc: 'Imported skills, montages, bullets, damage rows and buffs, exactly as the game has them.',

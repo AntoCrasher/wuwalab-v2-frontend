@@ -48,6 +48,10 @@ features share moves to `src/ui` or `src/lib`.
   Never a native `<select>`, `<input>` or `<button>` styled by hand, never `window.confirm` or `alert`.
   If `src/ui` lacks one, port v1's wrapper from `C:/WuwaLab/wuwalab-com/src/ui` or export the Astryx
   component there first, following `wuwalab-com/docs/astryx-conversion.md`.
+- **Game terms.** Elements, weapon types, damage types and subtypes, scaling and skill genres are enums in
+  the backend (`src/Engine/Term`). Show one with `TermBadge` or `useTerm` from `src/ui`, which give the name
+  and the color; never print the bare number or hard-code a color for one. The one native control allowed
+  is `ColorField`'s swatch picker, as in v1: Astryx has no color picker.
 - **v1 is the look.** `src/ui/astryx/*.css` is v1's customized Astryx styling, ported whole (comments
   stripped, split to fit the size limit); change the look in v1's terms, not ad hoc. A page is built like
   its v1 counterpart: `AdminPage` (v1's `container` + `VStack gap={5} paddingBlock={6}`), `AdminBack`,
