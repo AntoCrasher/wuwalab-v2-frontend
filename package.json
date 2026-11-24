@@ -1,0 +1,35 @@
+{
+  "name": "wuwalab-v2-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "check:format": "prettier --check .",
+    "check:types": "tsc -b",
+    "check:lint": "oxlint",
+    "check:css": "node scripts/css-size.mjs",
+    "check:deps": "depcruise src --config .dependency-cruiser.cjs",
+    "check": "npm run check:format && npm run check:types && npm run check:lint && npm run check:css && npm run check:deps"
+  },
+  "dependencies": {
+    "@fontsource/albert-sans": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "dependency-cruiser": "^18.9.0",
+    "oxlint": "^1.95.0",
+    "prettier": "^3.10.1",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.6"
+  }
+}

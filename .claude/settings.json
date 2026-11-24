@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/edit-hook.mjs",
+            "timeout": 30,
+            "statusMessage": "Checking size limits"
+          }
+        ]
+      }
+    ]
+  }
+}
