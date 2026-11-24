@@ -1,29 +1,23 @@
-import { frames, montagePath } from '@/lib/gameFormat'
+import { frames } from '@/lib/gameFormat'
 import type { Montage } from '@/lib/gameTypes'
-import { shortClass, useJson } from '@/ui'
+import { GridSelect, shortClass, useJson } from '@/ui'
 
 type Props = { montageKey: string; value: number | null; onChange: (position: number) => void }
 
 export function LeaveNotifySelect({ montageKey, value, onChange }: Props) {
-  const loaded = useJson<Montage>(montagePath(montageKey).replace('/admin/game/', '/api/game/'))
+  const loaded = useJson<Montage>(`/api/game/montage?key=${encodeURIComponent(montageKey)}`)
   if (loaded.state !== 'ready') {
     return <span className="wl-dim">{loaded.state === 'error' ? loaded.message : 'Loading…'}</span>
   }
   return (
-    <select
-      className="inline-select"
-      aria-label="Leave at notify"
-      value={value ?? ''}
-      onChange={(event) => onChange(Number(event.target.value))}
-    >
-      <option value="" disabled>
-        pick a notify
-      </option>
-      {loaded.data.notifies.map((notify) => (
-        <option key={notify.position} value={notify.position}>
-          {frames(notify.time)} {shortClass(notify.notifyClass)} #{notify.position}
-        </option>
-      ))}
-    </select>
+    <GridSelect
+      label="Leave at notify"
+      value={value === null ? '' : String(value)}
+      options={loaded.data.notifies.map((notify) => ({
+        value: String(notify.position),
+        label: `${frames(notify.time)} ${shortClass(notify.notifyClass)} #${notify.position}`,
+      }))}
+      onChange={(position) => onChange(Number(position))}
+    />
   )
 }

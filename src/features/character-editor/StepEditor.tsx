@@ -1,8 +1,7 @@
-import { LEAVE_KINDS, type LeaveKind, type StepDraft } from '@/lib/abilityDraft'
+import { LEAVE_KINDS, type StepDraft } from '@/lib/abilityDraft'
 import type { Skill } from '@/lib/gameTypes'
-import { Button } from '@/ui'
+import { Button, GridNumber, GridSelect } from '@/ui'
 import { LeavePoint } from './LeavePoint'
-import { NumberInput } from './NumberInput'
 import { StepSource } from './StepSource'
 
 type Props = {
@@ -13,7 +12,12 @@ type Props = {
   onRemove: () => void
 }
 
-const LEAVE_LABELS: Record<LeaveKind, string> = { end: 'its end', notify: 'a notify', time: 'a time' }
+const SECOND_STEP = 0.01
+const LEAVE_OPTIONS = [
+  { value: 'end', label: 'its end' },
+  { value: 'notify', label: 'a notify' },
+  { value: 'time', label: 'a time' },
+]
 
 export function StepEditor({ index, step, skills, onChange, onRemove }: Props) {
   function pickLeave(kind: string) {
@@ -27,21 +31,11 @@ export function StepEditor({ index, step, skills, onChange, onRemove }: Props) {
     <>
       <span>{index + 1}</span>
       <StepSource step={step} skills={skills} onChange={onChange} />
-      <select
-        className="inline-select"
-        aria-label="Left at"
-        value={step.leaveKind}
-        onChange={(event) => pickLeave(event.target.value)}
-      >
-        {LEAVE_KINDS.map((kind) => (
-          <option key={kind} value={kind}>
-            {LEAVE_LABELS[kind]}
-          </option>
-        ))}
-      </select>
+      <GridSelect label="Left at" value={step.leaveKind} options={LEAVE_OPTIONS} onChange={pickLeave} />
       <LeavePoint step={step} onChange={onChange} />
-      <NumberInput
+      <GridNumber
         label="Next starts at seconds"
+        step={SECOND_STEP}
         value={step.nextStart}
         onChange={(nextStart) => onChange({ ...step, nextStart })}
       />

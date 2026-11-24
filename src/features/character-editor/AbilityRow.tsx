@@ -45,7 +45,12 @@ export function AbilityRow({ characterId, ability, onChanged }: Props) {
         <div className="atd">{dim(ability.cooldown)}</div>
         <div className="atd">{ability.priority ?? dim(null)}</div>
         <div className="atd dim">{ability.skillId ?? '-'}</div>
-        <RowActions abilityId={ability.id} onEdit={() => setMode('edit')} onDeleted={onChanged} />
+        <RowActions
+          abilityId={ability.id}
+          name={ability.name}
+          onEdit={() => setMode('edit')}
+          onDeleted={onChanged}
+        />
       </div>
       {mode === 'open' && <AbilityPanel abilityId={ability.id} revision={revision} />}
       {mode === 'edit' && (

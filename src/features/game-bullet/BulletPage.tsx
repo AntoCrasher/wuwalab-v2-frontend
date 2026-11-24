@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import type { Bullet } from '@/lib/gameTypes'
-import { AdminBack, Facts, LoadGate, PageHeader, useJson } from '@/ui'
+import { AdminBack, AdminPage, Facts, LoadGate, PageHeader, useJson } from '@/ui'
 import { DamageTable } from './DamageTable'
 import { LinkedRows } from './LinkedRows'
 import { shapeFacts, timingFacts } from './bulletFacts'
@@ -10,7 +10,7 @@ export function BulletPage() {
   const loaded = useJson<Bullet>(`/api/game/bullets/${bulletId}`)
 
   return (
-    <main className="container">
+    <AdminPage>
       <AdminBack to="/admin/abilities" label="Character Editor" />
       <LoadGate loaded={loaded}>
         {(bullet) => (
@@ -29,6 +29,6 @@ export function BulletPage() {
           </>
         )}
       </LoadGate>
-    </main>
+    </AdminPage>
   )
 }

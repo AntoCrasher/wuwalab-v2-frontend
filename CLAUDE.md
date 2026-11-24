@@ -43,7 +43,15 @@ features share moves to `src/ui` or `src/lib`.
 - Settings belong to the account, never `localStorage`.
 - The look: sharp corners only (no `border-radius` except true circles), hairlines instead of boxes, dense
   ledger tables, colours from `src/styles/theme.css`. US spelling in visible text.
-- The component library (Astryx) and its styling tool are added with the component layer, not before.
+- **Astryx for every control.** Selects, text and number fields, buttons, checkboxes, switches, tabs, tables,
+  dialogs, toasts, badges and cards are Astryx components, taken from `src/ui` (the only door to Astryx).
+  Never a native `<select>`, `<input>` or `<button>` styled by hand, never `window.confirm` or `alert`.
+  If `src/ui` lacks one, port v1's wrapper from `C:/WuwaLab/wuwalab-com/src/ui` or export the Astryx
+  component there first, following `wuwalab-com/docs/astryx-conversion.md`.
+- **v1 is the look.** `src/ui/astryx/*.css` is v1's customized Astryx styling, ported whole (comments
+  stripped, split to fit the size limit); change the look in v1's terms, not ad hoc. A page is built like
+  its v1 counterpart: `AdminPage` (v1's `container` + `VStack gap={5} paddingBlock={6}`), `AdminBack`,
+  `PageHeader`, then the content. Look at the v1 page before laying out a new one.
 
 ## Working with Anton
 

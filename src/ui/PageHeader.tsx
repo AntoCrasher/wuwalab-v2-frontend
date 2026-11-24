@@ -1,19 +1,16 @@
 import type { ReactNode } from 'react'
+import { Heading } from '@astryxdesign/core/Heading'
+import { Text } from '@astryxdesign/core/Text'
+import { VStack } from '@astryxdesign/core/VStack'
 
-export function PageHeader({
-  kicker,
-  title,
-  children,
-}: {
-  kicker: string
-  title: string
-  children?: ReactNode
-}) {
+type Props = { kicker: string; title: string; children?: ReactNode }
+
+export function PageHeader({ kicker, title, children }: Props) {
   return (
-    <header className="wl-page-head">
+    <VStack gap={2}>
       <span className="wl-kicker">{kicker}</span>
-      <h1>{title}</h1>
-      {children !== undefined && <p>{children}</p>}
-    </header>
+      <Heading level={1}>{title}</Heading>
+      {children !== undefined && <Text color="secondary">{children}</Text>}
+    </VStack>
   )
 }

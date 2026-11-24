@@ -1,30 +1,34 @@
-import { useState, type MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
 import { sendJson } from '@/lib/api'
-import { Button } from '@/ui'
+import { Button, confirmDialog, toastError } from '@/ui'
 
-type Props = { abilityId: number; onEdit: () => void; onDeleted: () => void }
+type Props = { abilityId: number; name: string; onEdit: () => void; onDeleted: () => void }
 
-export function RowActions({ abilityId, onEdit, onDeleted }: Props) {
-  const [confirming, setConfirming] = useState(false)
-
+export function RowActions({ abilityId, name, onEdit, onDeleted }: Props) {
   function edit(event: MouseEvent) {
     event.stopPropagation()
     onEdit()
   }
 
-  function remove(event: MouseEvent) {
+  async function remove(event: MouseEvent) {
     event.stopPropagation()
-    if (!confirming) {
-      setConfirming(true)
-      return
+    const confirmed = await confirmDialog({
+      title: `Delete ${name}?`,
+      message: 'Its path and swap blocks are deleted with it. The game data it points at is untouched.',
+      confirmLabel: 'Delete',
+      danger: true,
+    })
+    if (confirmed) {
+      sendJson('DELETE', `/api/admin/abilities/${abilityId}`)
+        .then(onDeleted)
+        .catch((failure: unknown) => toastError('Could not delete the ability', failure))
     }
-    void sendJson('DELETE', `/api/admin/abilities/${abilityId}`).then(onDeleted)
   }
 
   return (
-    <div className="atd atd-actions" onMouseLeave={() => setConfirming(false)}>
+    <div className="atd atd-actions">
       <Button variant="ghost" size="sm" label="Edit" onClick={edit} />
-      <Button variant="destructive" size="sm" label={confirming ? 'Sure?' : 'Delete'} onClick={remove} />
+      <Button variant="destructive" size="sm" label="Delete" onClick={(event) => void remove(event)} />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { AbilitySummary } from '@/lib/adminTypes'
 import { sendJson } from '@/lib/api'
-import { Button, EmptyNote } from '@/ui'
+import { Button, EmptyNote, TextInput, toastError } from '@/ui'
 import { AbilityRow } from './AbilityRow'
 import './abilityLedger.css'
 
@@ -23,24 +23,26 @@ type Props = { characterId: number; abilities: AbilitySummary[]; onChanged: () =
 
 export function AbilityLedger({ characterId, abilities, onChanged }: Props) {
   const [filter, setFilter] = useState('')
-  const [error, setError] = useState('')
   const wanted = filter.trim().toLowerCase()
   const shown = abilities.filter((ability) => ability.name.toLowerCase().includes(wanted))
 
   function add() {
     sendJson('POST', `/api/admin/characters/${characterId}/abilities`, { name: 'New ability' })
       .then(onChanged)
-      .catch((failure: unknown) => setError(failure instanceof Error ? failure.message : String(failure)))
+      .catch((failure: unknown) => toastError('Could not add the ability', failure))
   }
 
   return (
     <>
       <div className="ability-filter-bar">
-        <input
-          className="ability-filter"
+        <TextInput
+          label="Filter abilities"
+          isLabelHidden
+          size="sm"
+          width="100%"
           value={filter}
           placeholder="Filter abilities…"
-          onChange={(event) => setFilter(event.target.value)}
+          onChange={(next) => setFilter(next)}
         />
       </div>
       <div className="ability-section">
@@ -55,9 +57,8 @@ export function AbilityLedger({ characterId, abilities, onChanged }: Props) {
           <AbilityRow key={ability.id} characterId={characterId} ability={ability} onChanged={onChanged} />
         ))}
         {shown.length === 0 && <EmptyNote>No ability matches that.</EmptyNote>}
-        <div className="ability-add-row edit-actions">
+        <div className="ability-add-row">
           <Button variant="ghost" size="sm" label="+ Ability" onClick={add} />
-          {error !== '' && <span className="edit-error">{error}</span>}
         </div>
       </div>
     </>

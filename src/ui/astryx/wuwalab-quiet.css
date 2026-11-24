@@ -1,0 +1,68 @@
+.wl-quiet .astryx-button,
+.wl-quiet .astryx-segmented-control,
+.wl-quiet .astryx-segmented-control-item {
+  border-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.wl-quiet .astryx-button,
+.wl-quiet .astryx-segmented-control-item {
+  height: auto;
+  min-height: 0;
+  padding: 2px 0;
+  color: var(--text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.wl-quiet .astryx-button:hover,
+.wl-quiet .astryx-segmented-control-item:hover {
+  color: var(--text);
+}
+
+.wl-quiet .astryx-segmented-control {
+  gap: 14px;
+  width: auto;
+  padding: 0;
+}
+
+.wl-quiet .astryx-segmented-control-item {
+  flex: none;
+  justify-content: flex-start;
+}
+
+.wl-quiet .astryx-button[data-is-pressed='true'],
+.wl-quiet .astryx-segmented-control-item[aria-checked='true'] {
+  color: var(--accent);
+}
+
+.wl-quiet :is(.astryx-toggle-button, .astryx-segmented-control-item)::before {
+  content: '·';
+  margin-right: 0.5em;
+  opacity: 0;
+}
+
+.wl-quiet .astryx-button[data-is-pressed='true']::before,
+.wl-quiet .astryx-segmented-control-item[aria-checked='true']::before {
+  opacity: 1;
+}
+
+.wl-quiet .astryx-text-input,
+.wl-quiet .astryx-typeahead {
+  border-color: transparent;
+  border-bottom-color: var(--border);
+  background-color: var(--surface-2);
+}
+
+.wl-quiet .astryx-text-input:focus-within,
+.wl-quiet .astryx-typeahead:focus-within {
+  border-color: transparent;
+  border-bottom-color: var(--accent);
+}
+
+.wl-quiet :is(.astryx-text-input, .astryx-typeahead) :is(input, input::placeholder) {
+  text-transform: none;
+  letter-spacing: normal;
+}

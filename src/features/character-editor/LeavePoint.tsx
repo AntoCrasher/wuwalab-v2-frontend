@@ -1,6 +1,8 @@
 import type { StepDraft } from '@/lib/abilityDraft'
+import { GridNumber } from '@/ui'
 import { LeaveNotifySelect } from './LeaveNotifySelect'
-import { NumberInput } from './NumberInput'
+
+const SECOND_STEP = 0.01
 
 export function LeavePoint({ step, onChange }: { step: StepDraft; onChange: (step: StepDraft) => void }) {
   if (step.leaveKind === 'notify') {
@@ -14,8 +16,9 @@ export function LeavePoint({ step, onChange }: { step: StepDraft; onChange: (ste
   }
   if (step.leaveKind === 'time') {
     return (
-      <NumberInput
+      <GridNumber
         label="Leave at seconds"
+        step={SECOND_STEP}
         value={step.leaveTime ?? 0}
         onChange={(leaveTime) => onChange({ ...step, leaveTime })}
       />

@@ -1,4 +1,4 @@
-import { EmptyNote, LoadGate, PageHeader } from '@/ui'
+import { AdminBack, AdminPage, EmptyNote, LoadGate, PageHeader, Text } from '@/ui'
 import { CharacterCard } from './CharacterCard'
 import { useCharacters } from './useCharacters'
 
@@ -6,16 +6,17 @@ export function CharacterEditorPage() {
   const { loaded, reload } = useCharacters()
 
   return (
-    <div className="container">
+    <AdminPage>
+      <AdminBack />
       <PageHeader kicker="Admin · Game data" title="Character Editor">
         Every imported character and its abilities: the path of montages each one plays and what they do.
       </PageHeader>
       <LoadGate loaded={loaded}>
         {(characters) => (
           <>
-            <span className="ce-tally">
+            <Text type="supporting">
               {characters.length} {characters.length === 1 ? 'character' : 'characters'}
-            </span>
+            </Text>
             <div className="ce-list">
               {characters.map((character) => (
                 <CharacterCard key={character.id} character={character} onChanged={reload} />
@@ -25,6 +26,6 @@ export function CharacterEditorPage() {
           </>
         )}
       </LoadGate>
-    </div>
+    </AdminPage>
   )
 }

@@ -1,0 +1,36 @@
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 700px) {
+  .ai-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ai-title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ai-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.ai-grid > * {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.ai-grid > *:hover {
+  background-color: var(--surface);
+  border-color: var(--border-light);
+}

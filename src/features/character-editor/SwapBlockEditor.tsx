@@ -1,45 +1,33 @@
 import type { SwapDraft } from '@/lib/abilityDraft'
 import { frames } from '@/lib/gameFormat'
-import { NumberInput } from './NumberInput'
+import { GridNumber, GridSelect } from '@/ui'
 
 type Props = { label: string; value: SwapDraft; steps: number; onChange: (value: SwapDraft) => void }
 
+const SECOND_STEP = 0.01
+const NONE = 'none'
+
 export function SwapBlockEditor({ label, value, steps, onChange }: Props) {
+  const stepOptions = Array.from({ length: steps }, (_, step) => ({
+    value: String(step),
+    label: `step ${step + 1}`,
+  }))
+
   return (
     <>
       <span className="ce-label">{label}</span>
-      <select
-        className="inline-select"
-        aria-label={`${label} set`}
-        value={value === null ? 'none' : 'set'}
-        onChange={(event) => onChange(event.target.value === 'none' ? null : { step: 0, time: 0 })}
-      >
-        <option value="none">none</option>
-        <option value="set" disabled={steps === 0}>
-          set
-        </option>
-      </select>
+      <GridSelect
+        label={`${label} step`}
+        value={value === null ? NONE : String(value.step)}
+        options={[{ value: NONE, label: 'none' }, ...stepOptions]}
+        onChange={(step) => onChange(step === NONE ? null : { step: Number(step), time: value?.time ?? 0 })}
+      />
       {value === null ? (
         <span className="wl-dim">-</span>
       ) : (
-        <select
-          className="inline-select"
-          aria-label={`${label} step`}
-          value={value.step}
-          onChange={(event) => onChange({ ...value, step: Number(event.target.value) })}
-        >
-          {Array.from({ length: steps }, (_, step) => (
-            <option key={step} value={step}>
-              step {step + 1}
-            </option>
-          ))}
-        </select>
-      )}
-      {value === null ? (
-        <span className="wl-dim">-</span>
-      ) : (
-        <NumberInput
+        <GridNumber
           label={`${label} seconds`}
+          step={SECOND_STEP}
           value={value.time}
           onChange={(time) => onChange({ ...value, time })}
         />

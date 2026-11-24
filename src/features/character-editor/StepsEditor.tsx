@@ -27,7 +27,7 @@ export function StepsEditor({ steps, skills, onChange }: Props) {
           />
         ))}
       </div>
-      <div className="edit-actions">
+      <div>
         <Button
           variant="ghost"
           size="sm"

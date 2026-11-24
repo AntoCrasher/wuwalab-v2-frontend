@@ -1,0 +1,315 @@
+.wl-kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.wl-chip-n {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.wl-chip-wrap {
+  display: contents;
+}
+
+.wl-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.astryx-button {
+  border: 1px solid var(--border-light);
+  background-color: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--ctl-fs-md);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.astryx-button[data-size='sm'] {
+  font-size: var(--ctl-fs-sm);
+}
+
+.astryx-button[data-size='lg'] {
+  font-size: var(--ctl-fs-lg);
+}
+
+.astryx-button:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background-color: transparent;
+}
+
+.astryx-button[data-variant='ghost'] {
+  border-color: var(--border);
+  color: var(--text-dim);
+}
+
+.astryx-button[data-variant='ghost']:hover {
+  border-color: var(--border-light);
+  color: var(--text);
+}
+
+.astryx-button[data-variant='primary'] {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #0e0f13;
+}
+
+.astryx-button[data-variant='primary']:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #0e0f13;
+}
+
+.astryx-button[data-variant='destructive'] {
+  color: var(--red);
+  border-color: color-mix(in srgb, var(--red) 40%, transparent);
+}
+
+.astryx-button[data-variant='destructive']:hover {
+  color: var(--red);
+  border-color: var(--red);
+  background-color: color-mix(in srgb, var(--red) 12%, transparent);
+}
+
+.astryx-button:is(
+  [data-variant='success'],
+  [data-variant='info'],
+  [data-variant='inspect'],
+  [data-variant='accent']
+) {
+  color: var(--wl-tone);
+  border-color: color-mix(in srgb, var(--wl-tone) 40%, transparent);
+}
+
+.astryx-button:is(
+    [data-variant='success'],
+    [data-variant='info'],
+    [data-variant='inspect'],
+    [data-variant='accent']
+  ):hover {
+  color: var(--wl-tone);
+  border-color: var(--wl-tone);
+  background-color: color-mix(in srgb, var(--wl-tone) 12%, transparent);
+}
+
+.astryx-button[data-variant='success'] {
+  --wl-tone: var(--green);
+}
+
+.astryx-button[data-variant='info'] {
+  --wl-tone: var(--blue);
+}
+
+.astryx-button[data-variant='inspect'] {
+  --wl-tone: var(--purple);
+}
+
+.astryx-button[data-variant='accent'] {
+  --wl-tone: var(--accent);
+}
+
+.astryx-button[data-is-pressed='true'] {
+  color: var(--wl-press-tone, var(--accent));
+  border-color: color-mix(in srgb, var(--wl-press-tone, var(--accent)) 45%, transparent);
+  background-color: color-mix(in srgb, var(--wl-press-tone, var(--accent)) 8%, transparent);
+}
+
+.astryx-button[aria-disabled='true'] {
+  opacity: 0.4;
+}
+
+.astryx-text-input,
+.astryx-text-area,
+.astryx-number-input,
+.astryx-typeahead,
+.astryx-multi-selector:not([role='option']),
+.astryx-selector:not([role='option']) {
+  border-color: var(--border);
+  background-color: transparent;
+}
+
+:is(.astryx-selector, .astryx-multi-selector):not([role='option']) > button,
+:is(.astryx-selector, .astryx-multi-selector):not([role='option']) [role='combobox'] {
+  font-family: var(--font-mono);
+  font-size: var(--ctl-fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+:is(.astryx-text-input, .astryx-number-input, .astryx-typeahead) input {
+  font-family: var(--font-mono);
+  font-size: var(--ctl-fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+:is(.astryx-text-input, .astryx-number-input, .astryx-typeahead) input::placeholder {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+:is(.astryx-text-input, .astryx-number-input, .astryx-typeahead) input::placeholder {
+  color: var(--text-dim);
+  opacity: 1;
+}
+
+:is(
+  .astryx-text-input,
+  .astryx-text-area,
+  .astryx-number-input,
+  .astryx-typeahead,
+  .astryx-multi-selector:not([role='option']),
+  .astryx-selector:not([role='option'])
+):hover {
+  border-color: var(--border-light);
+}
+
+:is(
+  .astryx-text-input,
+  .astryx-text-area,
+  .astryx-number-input,
+  .astryx-typeahead,
+  .astryx-multi-selector:not([role='option']),
+  .astryx-selector:not([role='option'])
+):focus-within {
+  border-color: var(--accent);
+}
+
+.astryx-selector-popup,
+.astryx-multi-selector-popup,
+.astryx-typeahead-popup {
+  background-color: var(--surface-2);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+}
+
+.astryx-selector-option-row {
+  color: var(--text);
+  background-color: transparent;
+}
+
+.astryx-selector-option-row[data-highlighted],
+.astryx-multi-selector-option[data-highlighted] {
+  background-color: transparent;
+}
+
+.astryx-selector-option-row:hover,
+.astryx-multi-selector-option:hover,
+:root[data-input='key'] :is(.astryx-selector-option-row, .astryx-multi-selector-option)[data-highlighted] {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.astryx-selector-option-row:is([data-highlighted], :hover) * {
+  background-color: transparent;
+}
+
+.astryx-selector-option-row[data-selected] {
+  color: var(--accent);
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.astryx-selector-option-row {
+  position: relative;
+}
+
+.astryx-selector-option-row[data-selected]:has(.ent-opt) {
+  box-shadow: none;
+}
+
+.astryx-selector-option-row[data-selected] .ent-opt::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: currentColor;
+}
+
+.astryx-multi-selector-option {
+  padding-left: 5px;
+  column-gap: 10px;
+}
+
+.astryx-selector-option-row svg {
+  display: none;
+}
+
+.astryx-selector-option-row > :has(> .astryx-selector-check) {
+  display: none;
+}
+
+.astryx-typeahead-option {
+  color: var(--text);
+}
+
+.astryx-typeahead-option[data-highlighted] {
+  background-color: transparent;
+}
+
+.astryx-typeahead-option:hover,
+:root[data-input='key'] .astryx-typeahead-option:is([data-highlighted], [aria-selected='true']) {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+.astryx-switch {
+  background-color: var(--surface-3);
+  border: 1px solid var(--border-light);
+}
+
+.astryx-switch-thumb {
+  border-radius: 0;
+  background-color: var(--text-dim);
+}
+
+.astryx-switch[data-checked] {
+  background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  border-color: var(--accent);
+}
+
+.astryx-switch[data-checked] .astryx-switch-thumb {
+  background-color: var(--accent);
+  width: 16px;
+  height: 16px;
+  transform: translateX(15px);
+}
+
+.astryx-checkbox-indicator:not([data-checked]) {
+  background-color: transparent;
+}
+
+.wl-chip-split {
+  width: 1px;
+  align-self: stretch;
+  margin: 2px 6px;
+  background: var(--border);
+}
+
+.wl-names {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wl-names > span:not(:last-child)::after {
+  content: ' · ';
+  color: var(--text-dim);
+  font-weight: 400;
+}

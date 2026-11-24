@@ -1,16 +1,13 @@
 .container {
-  max-width: 1480px;
+  max-width: 2200px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 28px 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  padding: 0 28px 400px;
 }
 
 .admin-back {
   display: inline-block;
-  margin: 24px 0 0;
+  margin: 24px 0 18px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
@@ -123,10 +120,4 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dim);
-}
-
-.ce-tally {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-muted);
 }

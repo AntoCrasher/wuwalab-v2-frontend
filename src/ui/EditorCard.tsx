@@ -1,5 +1,4 @@
 import { useState, type CSSProperties, type ReactNode } from 'react'
-import './editorKit.css'
 
 type Props = { color: string; name: string; tags?: ReactNode; count: ReactNode; children: ReactNode }
 
