@@ -249,3 +249,12 @@
 .edit-draft {
   width: 140px;
 }
+
+.edit-flags {
+  display: flex;
+  gap: 14px;
+}
+
+.edit-cast-by {
+  width: 180px;
+}

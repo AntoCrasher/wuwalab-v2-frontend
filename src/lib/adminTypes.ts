@@ -1,11 +1,21 @@
 import type { GameCharacter, Notify } from './gameTypes'
 
+export const CAST_BY = ['user', 'intro_swap', 'swap_in'] as const
+export type CastBy = (typeof CAST_BY)[number]
+
+export const CAST_BY_LABELS: Record<CastBy, string> = {
+  user: 'the user',
+  intro_swap: 'an Intro swap',
+  swap_in: 'a swap-in',
+}
+
 export type AbilitySummary = {
   id: number
   name: string
   genre: number | null
   sortIndex: number
   isDraft: boolean
+  castBy: CastBy
   steps: number
   hitNotifies: number
   length: number

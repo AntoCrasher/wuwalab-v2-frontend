@@ -1,4 +1,4 @@
-import type { AbilitySummary } from '@/lib/adminTypes'
+import { CAST_BY_LABELS, type AbilitySummary } from '@/lib/adminTypes'
 import { frames } from '@/lib/gameFormat'
 import { Badge, TermBadge } from '@/ui'
 
@@ -12,6 +12,7 @@ export function AbilityCells({ ability }: { ability: AbilitySummary }) {
       <div className="atd atd-name">
         <span className="atd-name-text">{ability.name}</span>
         {ability.isDraft && <Badge label="Draft" variant="warning" />}
+        {ability.castBy !== 'user' && <Badge label={`Cast by ${CAST_BY_LABELS[ability.castBy]}`} />}
       </div>
       <div className="atd">
         <TermBadge list="skill_genre" id={ability.genre} />
