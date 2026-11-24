@@ -126,3 +126,57 @@
 :where(div, section, ul, ol, dialog):focus-visible {
   outline: none;
 }
+
+.astryx-button {
+  border: 1px solid var(--border-light);
+  background-color: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--ctl-fs-md);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.astryx-button[data-size='sm'] {
+  font-size: var(--ctl-fs-sm);
+}
+
+.astryx-button:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background-color: transparent;
+}
+
+.astryx-button[data-variant='ghost'] {
+  border-color: var(--border);
+  color: var(--text-dim);
+}
+
+.astryx-button[data-variant='ghost']:hover {
+  border-color: var(--border-light);
+  color: var(--text);
+}
+
+.astryx-button[data-variant='primary'] {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #0e0f13;
+}
+
+.astryx-button[data-variant='primary']:hover {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #0e0f13;
+}
+
+.astryx-button[data-variant='destructive'] {
+  color: var(--red);
+  border-color: color-mix(in srgb, var(--red) 40%, transparent);
+}
+
+.astryx-button[data-variant='destructive']:hover {
+  color: var(--red);
+  border-color: var(--red);
+  background-color: color-mix(in srgb, var(--red) 12%, transparent);
+}

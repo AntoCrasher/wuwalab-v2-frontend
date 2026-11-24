@@ -1,9 +1,9 @@
-import type { AdminCharacter } from '@/lib/adminTypes'
-import { EmptyNote, LoadGate, PageHeader, useJson } from '@/ui'
+import { EmptyNote, LoadGate, PageHeader } from '@/ui'
 import { CharacterCard } from './CharacterCard'
+import { useCharacters } from './useCharacters'
 
 export function CharacterEditorPage() {
-  const loaded = useJson<AdminCharacter[]>('/api/admin/characters')
+  const { loaded, reload } = useCharacters()
 
   return (
     <div className="container">
@@ -18,7 +18,7 @@ export function CharacterEditorPage() {
             </span>
             <div className="ce-list">
               {characters.map((character) => (
-                <CharacterCard key={character.id} character={character} />
+                <CharacterCard key={character.id} character={character} onChanged={reload} />
               ))}
             </div>
             {characters.length === 0 && <EmptyNote>No characters imported yet.</EmptyNote>}

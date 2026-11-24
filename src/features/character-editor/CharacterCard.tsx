@@ -1,10 +1,11 @@
+import type { ReactNode } from 'react'
 import type { AdminCharacter } from '@/lib/adminTypes'
 import { Badge, EditorCard, Link } from '@/ui'
 import { AbilityLedger } from './AbilityLedger'
 
 const CARD_COLOR = 'var(--accent)'
 
-function Stat({ label, children }: { label: string; children: React.ReactNode }) {
+function Stat({ label, children }: { label: string; children: ReactNode }) {
   return (
     <span className="ce-stat">
       <span className="ce-label">{label}</span>
@@ -13,7 +14,13 @@ function Stat({ label, children }: { label: string; children: React.ReactNode })
   )
 }
 
-export function CharacterCard({ character }: { character: AdminCharacter }) {
+export function CharacterCard({
+  character,
+  onChanged,
+}: {
+  character: AdminCharacter
+  onChanged: () => void
+}) {
   const folder = character.folder.split('/').at(-1) ?? character.folder
 
   return (
@@ -36,7 +43,7 @@ export function CharacterCard({ character }: { character: AdminCharacter }) {
           <Link href={`/admin/game/${character.id}`}>skills</Link>
         </Stat>
       </div>
-      <AbilityLedger abilities={character.abilities} />
+      <AbilityLedger characterId={character.id} abilities={character.abilities} onChanged={onChanged} />
     </EditorCard>
   )
 }

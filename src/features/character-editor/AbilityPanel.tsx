@@ -38,8 +38,8 @@ function PanelBody({ ability }: { ability: AbilityDetail }) {
   )
 }
 
-export function AbilityPanel({ abilityId }: { abilityId: number }) {
-  const loaded = useJson<AbilityDetail>(`/api/admin/abilities/${abilityId}`)
+export function AbilityPanel({ abilityId, revision }: { abilityId: number; revision: number }) {
+  const loaded = useJson<AbilityDetail>(`/api/admin/abilities/${abilityId}?v=${revision}`)
 
   return (
     <div className="ability-panel">

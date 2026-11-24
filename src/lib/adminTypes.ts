@@ -4,6 +4,7 @@ export type AbilitySummary = {
   id: number
   name: string
   abilityType: string | null
+  sortIndex: number
   isDraft: boolean
   steps: number
   hitNotifies: number

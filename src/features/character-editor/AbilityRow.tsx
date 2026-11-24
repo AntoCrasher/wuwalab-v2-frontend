@@ -2,21 +2,33 @@ import { useState } from 'react'
 import type { AbilitySummary } from '@/lib/adminTypes'
 import { frames } from '@/lib/gameFormat'
 import { Badge } from '@/ui'
+import { AbilityEditForm } from './AbilityEditForm'
 import { AbilityPanel } from './AbilityPanel'
 import { Chevron } from './Chevron'
+import { RowActions } from './RowActions'
+
+type Mode = 'closed' | 'open' | 'edit'
+type Props = { characterId: number; ability: AbilitySummary; onChanged: () => void }
 
 function dim(text: string | number | null) {
   return text === null || text === 0 ? <span className="dim">-</span> : text
 }
 
-export function AbilityRow({ ability }: { ability: AbilitySummary }) {
-  const [open, setOpen] = useState(false)
+export function AbilityRow({ characterId, ability, onChanged }: Props) {
+  const [mode, setMode] = useState<Mode>('closed')
+  const [revision, setRevision] = useState(0)
+
+  function saved() {
+    setRevision((was) => was + 1)
+    setMode('open')
+    onChanged()
+  }
 
   return (
     <div>
       <div
-        className={open ? 'ability-grid-row is-open' : 'ability-grid-row'}
-        onClick={() => setOpen((was) => !was)}
+        className={mode === 'closed' ? 'ability-grid-row' : 'ability-grid-row is-open'}
+        onClick={() => setMode((was) => (was === 'closed' ? 'open' : was === 'open' ? 'closed' : was))}
       >
         <div className="atd atd-expand">
           <Chevron />
@@ -30,11 +42,21 @@ export function AbilityRow({ ability }: { ability: AbilitySummary }) {
         <div className="atd">{dim(ability.hitNotifies)}</div>
         <div className="atd atd-frames">{frames(ability.length)}</div>
         <div className="atd">{ability.firstHit === null ? dim(null) : frames(ability.firstHit)}</div>
-        <div className="atd">{ability.cooldown === null ? dim(null) : dim(ability.cooldown)}</div>
+        <div className="atd">{dim(ability.cooldown)}</div>
         <div className="atd">{ability.priority ?? dim(null)}</div>
         <div className="atd dim">{ability.skillId ?? '-'}</div>
+        <RowActions abilityId={ability.id} onEdit={() => setMode('edit')} onDeleted={onChanged} />
       </div>
-      {open && <AbilityPanel abilityId={ability.id} />}
+      {mode === 'open' && <AbilityPanel abilityId={ability.id} revision={revision} />}
+      {mode === 'edit' && (
+        <AbilityEditForm
+          characterId={characterId}
+          abilityId={ability.id}
+          revision={revision}
+          onSaved={saved}
+          onCancel={() => setMode('open')}
+        />
+      )}
     </div>
   )
 }
